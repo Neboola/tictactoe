@@ -9,9 +9,10 @@ public class Tictactoe {
 
     public static void main(String[] args) throws IOException {
 
-        Gamer gamerO = new GamerMan(Cell.oCell);
-        Gamer gamerX = new GamerBot(Cell.xCell);
-        Game game = new Game(gamerX, gamerO, 4);
+        Gamer gamerX = new GamerMan(Cell.xCell);
+        Gamer gamerO = new GamerBot(Cell.oCell);
+
+        Game game = new Game(gamerX, gamerO, 5);
         game.processGame();
 
     }

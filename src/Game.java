@@ -21,6 +21,7 @@ public class Game {
     public void processGame() throws IOException {
 
         board.printBoardPG();
+        System.out.println();
 
         Move nextMove = new Move();
         nextMove.index = new Index();
@@ -40,12 +41,14 @@ public class Game {
             while(true){
 
                 nextMove = currentGamer.getMove(board, level);
-                System.out.println("I'll step " + nextMove.index.horizontal + "." + nextMove.index.vertical);
 
                 if(board.canMakeMove(nextMove)){
                     board.makeMove(nextMove);
                     board.checkWin();
 
+                    System.out.println(currentGamer.cell.filling + " steps to " + nextMove.index.horizontal + "." + nextMove.index.vertical);
+
+                    System.out.println();
                     board.printBoardPG();
                     System.out.println();
 
@@ -53,10 +56,6 @@ public class Game {
                 }
                 else{
                     System.out.println("Target cell is not empty");
-                    System.out.println();
-
-                    board.printBoardPG();
-                    System.out.println();
                 }
             }
         }

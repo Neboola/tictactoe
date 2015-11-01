@@ -22,7 +22,8 @@ public class GamerMan extends Gamer {
         nextMove.index = new Index();
         nextMove.cell = cell;
 
-        System.out.println(nextMove.cell.filling + " steps to");
+
+        System.out.println(nextMove.cell.filling + " will step to");
 
         while(true){
             System.out.println("H: ");
@@ -46,13 +47,6 @@ public class GamerMan extends Gamer {
                 System.out.println("Please enter 1-3");
             }
         }
-
-
-        System.out.println();
-
-
-
-
 
         return nextMove;
     }
