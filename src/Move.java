@@ -6,20 +6,16 @@ import java.util.*;
 public class Move {
 
     public static int counter;
-
     public Move preMove;
-
     public Index index;
     public Cell cell;
-
     public Board nextBoard;
     public ArrayList<Move> movesList;
-
     public int priority;
 
     Move(){
 
-        this.priority = -9;
+        this.priority = 0;
 
     }
 
@@ -41,7 +37,7 @@ public class Move {
         this.index = index;
         this.cell = cell;
         this.preMove = preMove;
-        this.priority = 9;
+        this.priority = 0;
     }
 
     public static Move treeRoot(){
@@ -148,9 +144,7 @@ public class Move {
 
     }
 
-    public void tryStepTreeDown(){
-
-
+    public void tryStepTreeDownForLose(){
 
         //System.out.println("=================== ST DOWN");
 
@@ -158,171 +152,92 @@ public class Move {
 
             //System.out.println("Board Line is: " + nextBoard.boardLine);
 
-
             if (nextBoard.whoWin != Cell.emptyCell.filling) {
-                //System.out.println("=================== ST UP");
-                this.stepTreeUp(nextBoard.whoWin, 9);
 
-
-                //return;
-
-            }
-            else if(nextBoard.isFull()) {
-                //System.out.println("=================== ST UP");
-                this.stepTreeUp(nextBoard.whoWin, 0);
-
-
-                //return;
+                if(nextBoard.whoWin != cell.filling){
+                    //System.out.println("=================== Loose");
+                    this.try2StepTreeUpForLose(9);
+                }
 
             }
 
-        }
 
-
-
-        if(movesList == null){
-
-            //System.out.println("movesList is empty. StepTreeDown stopped.");
-            //System.out.println();
-            //System.out.println();
-
-
-            return;
+                //else {
+                    //if (nextBoard.isFull()) {
+                        //System.out.println("=================== Draw");
+                        //this.stepTreeUpForDraw(nextBoard.whoWin, 0);
+                    //}
+                //}
 
         }
         else{
+            System.out.println("nextBoard = null !");
+            Tictactoe.sec(10);
+        }
 
+        if(movesList != null){
             for (Move nextMove : movesList) {
-
-                nextMove.tryStepTreeDown();
-
+                nextMove.tryStepTreeDownForLose();
             }
         }
-
     }
 
-    public void stepTreeUp(char winner, int prior){
+    public void tryStepTreeDownForWin(){
 
-        //System.out.println("============= inside ST Up");
-
-
-
-
-
-
-            if(winner != cell.filling){
-                if(-prior < priority) priority = -prior;
-
-
-            }
-            else {
-                if (preMove != null)
-                    if (preMove.preMove != null)
-                if (preMove.preMove.nextBoard.whoWin == cell.filling) priority = prior;
-                if ((nextBoard.whoWin == cell.filling)) priority = prior;
-                else
-                if(prior < priority) priority = prior;
-            }
-
-
-
-
-
-
-
-
-
-
-        if (preMove != null) preMove.stepTreeUp(winner, prior - 1);
-        //else System.out.println("preMove is empty");
-
-
-
-    }
-
-    public void printTree() {
-
-        System.out.println("Priority is " + priority);
-
-        if(cell != null){
-            System.out.print(cell.filling + " steps to ");
-        }
-        else{
-            System.out.println("cell is empty");
-        }
-
-        if(index != null){
-            System.out.println(index.horizontal + "," + index.vertical );
-
-        }
-        else{
-            System.out.println("index is empty");
-        }
+        //System.out.println("=================== ST DOWN");
 
         if(nextBoard != null){
 
-            System.out.println("Board Line is: " + nextBoard.boardLine);
-            nextBoard.printBoardPG();
+            //System.out.println("Board Line is: " + nextBoard.boardLine);
 
             if (nextBoard.whoWin != Cell.emptyCell.filling) {
-                System.out.println(nextBoard.whoWin + " WIN! ========================");
-                System.out.println();
-                System.out.println();
 
-                return;
-            }
-            else if(nextBoard.isFull()) {
-                System.out.println("DRAW! ========================");
-                System.out.println();
-                System.out.println();
+                if(nextBoard.whoWin != cell.filling){
+                    //System.out.println("=================== Loose");
+                    this.try2StepTreeUpForWin(9);
+                }
 
-                return;
             }
+
+
+            //else {
+            //if (nextBoard.isFull()) {
+            //System.out.println("=================== Draw");
+            //this.stepTreeUpForDraw(nextBoard.whoWin, 0);
+            //}
+            //}
 
         }
         else{
-            System.out.println("nextBoard is empty");
-        }
-
-
-
-
-
-
-
-
-
-        //System.out.println("printTree started.");
-
-        if(movesList == null){
-
-
-
-            System.out.println("movesList is empty. printTree stopped.");
-            System.out.println();
-            System.out.println();
-
+            System.out.println("nextBoard = null !");
             Tictactoe.sec(10);
-
-
-            return;
-
         }
-        else{
 
+        if(movesList != null){
             for (Move nextMove : movesList) {
-
-                    nextMove.printTree();
-
+                nextMove.tryStepTreeDownForWin();
             }
         }
+    }
 
+    public void try2StepTreeUpForLose(int prior){
+        //System.out.println("============= inside ST Up");
+            if(-prior < priority) priority = -prior;
+        if ((preMove != null) && (preMove.preMove != null)) preMove.preMove.try2StepTreeUpForLose(prior - 1);
+    }
 
+    public void try2StepTreeUpForWin(int prior){
+        //System.out.println("============= inside ST Up");
+        if(prior > priority) priority = prior;
+        if ((preMove != null) && (preMove.preMove != null)) preMove.preMove.try2StepTreeUpForWin(prior - 1);
     }
 
     public void generatePriorities(){
-        this.tryStepTreeDown();
+        tryStepTreeDownForLose();
+        tryStepTreeDownForWin();
     }
+
+
 
 
 }

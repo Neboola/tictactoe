@@ -67,12 +67,12 @@ public class Board {
 
         Cell targetCell = currentMove.cell;
 
-        Move blockMove = new Move(currentMove);
+        Move nextMove = new Move(currentMove);
 
         int counterXO;
         Index currentIndex = new Index();
 
-        System.out.println();
+
         System.out.println("check vertical lines");
 
         for (int h = 1; h < 4; h++) {
@@ -104,22 +104,22 @@ public class Board {
 
 
             if (counterXO == 2) {
-                blockMove.index = currentIndex;
+                nextMove.index = currentIndex;
                 System.out.println("counter = 2. win found? current h: " + currentIndex.horizontal + " v: " + currentIndex.vertical);
 
-                if(board.canMakeMove(blockMove)) {
-                     System.out.println("win found!!! h: " + blockMove.index.horizontal + " v: " + blockMove.index.vertical);
+                if(board.canMakeMove(nextMove)) {
+                     System.out.println("win found!!! h: " + nextMove.index.horizontal + " v: " + nextMove.index.vertical);
 
-                     return blockMove;
+                     return nextMove;
                  }
-                else System.out.println("cant go to " + blockMove.index.horizontal + "," + blockMove.index.vertical);
+                else System.out.println("cant go to " + nextMove.index.horizontal + "," + nextMove.index.vertical);
 
             }
 
 
         }
 
-        System.out.println();
+
         System.out.println("check horizontal lines");
 
         for (int v = 1; v < 4; v++) {
@@ -152,15 +152,15 @@ public class Board {
             }
 
             if (counterXO == 2) {
-                blockMove.index = currentIndex;
+                nextMove.index = currentIndex;
                 System.out.println("counter = 2. win found? current h: " + currentIndex.horizontal + " v: " + currentIndex.vertical);
 
-                if(board.canMakeMove(blockMove)) {
-                    System.out.println("win found!!! h: " + blockMove.index.horizontal + " v: " + blockMove.index.vertical);
+                if(board.canMakeMove(nextMove)) {
+                    System.out.println("win found!!! h: " + nextMove.index.horizontal + " v: " + nextMove.index.vertical);
 
-                    return blockMove;
+                    return nextMove;
                 }
-                else System.out.println("cant go to " + blockMove.index.horizontal + "," + blockMove.index.vertical);
+                else System.out.println("cant go to " + nextMove.index.horizontal + "," + nextMove.index.vertical);
 
             }
 
@@ -169,9 +169,11 @@ public class Board {
         }
 
 
-
+        System.out.println("check diagonal right-left line");
+        counterXO = 0;
         for (int hv = 1; hv < 4; hv++) {
-            counterXO = 0;
+            System.out.println("h: " + hv + " v: " + hv);
+
 
             for(Map.Entry<Index, Cell> entry : map.entrySet()){
                 Index index = entry.getKey();
@@ -191,9 +193,13 @@ public class Board {
             }
 
             if (counterXO == 2) {
-                blockMove.index = currentIndex;
-                if(board.canMakeMove(blockMove)) return blockMove;
-                else System.out.println("cant go to " + blockMove.index.horizontal + "," + blockMove.index.vertical);
+                nextMove.index = currentIndex;
+                System.out.println("counter = 2. win found? current h: " + currentIndex.horizontal + " v: " + currentIndex.vertical);
+                if(board.canMakeMove(nextMove)) {
+                    System.out.println("win found!!! h: " + nextMove.index.horizontal + " v: " + nextMove.index.vertical);
+                    return nextMove;
+                }
+                else System.out.println("cant go to " + nextMove.index.horizontal + "," + nextMove.index.vertical);
 
             }
 
@@ -204,10 +210,12 @@ public class Board {
 
 
 
-
+        System.out.println("check diagonal left-right line");
+        counterXO = 0;
         for (int h = 1; h < 4; h++) {
             int v = 4 - h;
-            counterXO = 0;
+            System.out.println("h: " + h + " v: " + v);
+
 
             for(Map.Entry<Index, Cell> entry : map.entrySet()){
                 Index index = entry.getKey();
@@ -228,9 +236,13 @@ public class Board {
 
 
             if (counterXO == 2) {
-                blockMove.index = currentIndex;
-                if(board.canMakeMove(blockMove)) return blockMove;
-                else System.out.println("cant go to " + blockMove.index.horizontal + "," + blockMove.index.vertical);
+                nextMove.index = currentIndex;
+                System.out.println("counter = 2. win found? current h: " + currentIndex.horizontal + " v: " + currentIndex.vertical);
+                if(board.canMakeMove(nextMove)) {
+                    System.out.println("win found!!! h: " + nextMove.index.horizontal + " v: " + nextMove.index.vertical);
+                    return nextMove;
+                }
+                else System.out.println("cant go to " + nextMove.index.horizontal + "," + nextMove.index.vertical);
 
             }
 
@@ -258,10 +270,11 @@ public class Board {
             }
         }
 
-        Move blockMove = new Move(currentMove);
+        Move nextMove = new Move(currentMove);
 
         int counterXO;
         Index currentIndex = new Index();
+        System.out.println("check vertical lines");
 
         for (int h = 1; h < 4; h++) {
             counterXO = 0;
@@ -292,22 +305,22 @@ public class Board {
 
 
             if (counterXO == 2) {
-                blockMove.index = currentIndex;
+                nextMove.index = currentIndex;
                 System.out.println("counter = 2. block found? current h: " + currentIndex.horizontal + " v: " + currentIndex.vertical);
 
-                if(board.canMakeMove(blockMove)) {
-                    System.out.println("block found!!! h: " + blockMove.index.horizontal + " v: " + blockMove.index.vertical);
+                if(board.canMakeMove(nextMove)) {
+                    System.out.println("block found!!! h: " + nextMove.index.horizontal + " v: " + nextMove.index.vertical);
 
-                    return blockMove;
+                    return nextMove;
                 }
-                else System.out.println("cant go to " + blockMove.index.horizontal + "," + blockMove.index.vertical);
+                else System.out.println("cant go to " + nextMove.index.horizontal + "," + nextMove.index.vertical);
 
             }
 
 
         }
 
-        System.out.println();
+        System.out.println("check horizontal lines");
 
         for (int v = 1; v < 4; v++) {
             counterXO = 0;
@@ -339,15 +352,15 @@ public class Board {
             }
 
             if (counterXO == 2) {
-                blockMove.index = currentIndex;
+                nextMove.index = currentIndex;
                 System.out.println("counter = 2. block found? current h: " + currentIndex.horizontal + " v: " + currentIndex.vertical);
 
-                if(board.canMakeMove(blockMove)) {
-                    System.out.println("block found!!! h: " + blockMove.index.horizontal + " v: " + blockMove.index.vertical);
+                if(board.canMakeMove(nextMove)) {
+                    System.out.println("block found!!! h: " + nextMove.index.horizontal + " v: " + nextMove.index.vertical);
 
-                    return blockMove;
+                    return nextMove;
                 }
-                else System.out.println("cant go to " + blockMove.index.horizontal + "," + blockMove.index.vertical);
+                else System.out.println("cant go to " + nextMove.index.horizontal + "," + nextMove.index.vertical);
 
             }
 
@@ -356,9 +369,11 @@ public class Board {
         }
 
 
-
+        System.out.println("check diagonal right-left line");
+        counterXO = 0;
         for (int hv = 1; hv < 4; hv++) {
-            counterXO = 0;
+            System.out.println("h: " + hv + " v: " + hv);
+
 
             for(Map.Entry<Index, Cell> entry : map.entrySet()){
                 Index index = entry.getKey();
@@ -378,9 +393,13 @@ public class Board {
             }
 
             if (counterXO == 2) {
-                blockMove.index = currentIndex;
-                if(board.canMakeMove(blockMove)) return blockMove;
-                else System.out.println("cant go to " + blockMove.index.horizontal + "," + blockMove.index.vertical);
+                nextMove.index = currentIndex;
+                System.out.println("counter = 2. block found? current h: " + currentIndex.horizontal + " v: " + currentIndex.vertical);
+                if(board.canMakeMove(nextMove)) {
+                    System.out.println("block found!!! h: " + nextMove.index.horizontal + " v: " + nextMove.index.vertical);
+                    return nextMove;
+                }
+                else System.out.println("cant go to " + nextMove.index.horizontal + "," + nextMove.index.vertical);
 
             }
 
@@ -390,11 +409,14 @@ public class Board {
         }
 
 
-
+        System.out.println("check diagonal left-right line");
+        counterXO = 0;
 
         for (int h = 1; h < 4; h++) {
             int v = 4 - h;
-            counterXO = 0;
+            System.out.println("h: " + h + " v: " + v);
+
+
 
             for(Map.Entry<Index, Cell> entry : map.entrySet()){
                 Index index = entry.getKey();
@@ -415,9 +437,13 @@ public class Board {
 
 
             if (counterXO == 2) {
-                blockMove.index = currentIndex;
-                if(board.canMakeMove(blockMove)) return blockMove;
-                else System.out.println("cant go to " + blockMove.index.horizontal + "," + blockMove.index.vertical);
+                nextMove.index = currentIndex;
+                System.out.println("counter = 2. block found? current h: " + currentIndex.horizontal + " v: " + currentIndex.vertical);
+                if(board.canMakeMove(nextMove)) {
+                    System.out.println("block found!!! h: " + nextMove.index.horizontal + " v: " + nextMove.index.vertical);
+                    return nextMove;
+                }
+                else System.out.println("cant go to " + nextMove.index.horizontal + "," + nextMove.index.vertical);
 
             }
 
