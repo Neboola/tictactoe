@@ -72,6 +72,9 @@ public class Board {
         int counterXO;
         Index currentIndex = new Index();
 
+        System.out.println();
+        System.out.println("check vertical lines");
+
         for (int h = 1; h < 4; h++) {
             counterXO = 0;
 
@@ -102,10 +105,10 @@ public class Board {
 
             if (counterXO == 2) {
                 blockMove.index = currentIndex;
-                System.out.println("counter = 2. block found? current h: " + currentIndex.horizontal + " v: " + currentIndex.vertical);
+                System.out.println("counter = 2. win found? current h: " + currentIndex.horizontal + " v: " + currentIndex.vertical);
 
                 if(board.canMakeMove(blockMove)) {
-                     System.out.println("block found!!! h: " + blockMove.index.horizontal + " v: " + blockMove.index.vertical);
+                     System.out.println("win found!!! h: " + blockMove.index.horizontal + " v: " + blockMove.index.vertical);
 
                      return blockMove;
                  }
@@ -117,6 +120,7 @@ public class Board {
         }
 
         System.out.println();
+        System.out.println("check horizontal lines");
 
         for (int v = 1; v < 4; v++) {
             counterXO = 0;
@@ -149,10 +153,10 @@ public class Board {
 
             if (counterXO == 2) {
                 blockMove.index = currentIndex;
-                System.out.println("counter = 2. block found? current h: " + currentIndex.horizontal + " v: " + currentIndex.vertical);
+                System.out.println("counter = 2. win found? current h: " + currentIndex.horizontal + " v: " + currentIndex.vertical);
 
                 if(board.canMakeMove(blockMove)) {
-                    System.out.println("block found!!! h: " + blockMove.index.horizontal + " v: " + blockMove.index.vertical);
+                    System.out.println("win found!!! h: " + blockMove.index.horizontal + " v: " + blockMove.index.vertical);
 
                     return blockMove;
                 }

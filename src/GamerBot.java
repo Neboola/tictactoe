@@ -104,7 +104,7 @@ int random = (int)(Math.random() * (bestMovesList.size()));
         }
 */
 
-        System.out.println("I step " + nextMove.index.horizontal + "." + nextMove.index.vertical);
+
         return nextMove;
     }
 

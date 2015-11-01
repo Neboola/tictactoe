@@ -46,6 +46,7 @@ public class Game {
             while(true){
 
                 nextMove = currentGamer.getMove(board, level);
+                System.out.println("I'll step " + nextMove.index.horizontal + "." + nextMove.index.vertical);
 
                 if(board.canMakeMove(nextMove)){
                     board.makeMove(nextMove);
