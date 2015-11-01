@@ -19,7 +19,7 @@ public class Tictactoe {
 
         Gamer gamerO = new GamerMan(Cell.oCell);
         Gamer gamerX = new GamerBot(Cell.xCell);
-        Game game = new Game(gamerX, gamerO, 6);
+        Game game = new Game(gamerX, gamerO, 8);
         game.processGame();
 
 

@@ -35,7 +35,7 @@ public class GamerBot extends Gamer {
         Move root = previousMove.getRoot(level);
         //System.out.println(root.cell.filling + ": I'm thinking!");
 
-        int bestPriority = -9;
+        int bestPriority = -10;
         for(Move move : root.movesList){
             System.out.println(move.cell.filling + ": maybee there?  " + move.index.horizontal + move.index.vertical);
             System.out.println("Priority is " + move.priority);

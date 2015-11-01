@@ -148,38 +148,32 @@ public class Move {
 
         //System.out.println("=================== ST DOWN");
 
-        if(nextBoard != null){
+        if(movesList != null){
 
-            //System.out.println("Board Line is: " + nextBoard.boardLine);
 
-            if (nextBoard.whoWin != Cell.emptyCell.filling) {
+            for (Move nextMove : movesList) {
+                if (nextMove.nextBoard.whoWin != Cell.emptyCell.filling) {
 
-                if(nextBoard.whoWin != cell.filling){
-                    //System.out.println("=================== Loose");
-                    this.try2StepTreeUpForLose(9);
+                    if(nextMove.nextBoard.whoWin != cell.filling){
+                        //System.out.println("=================== Loose");
+                        try2StepTreeUpForLose(9);
+                        break;
+                    }
+
                 }
-
             }
 
 
-                //else {
-                    //if (nextBoard.isFull()) {
-                        //System.out.println("=================== Draw");
-                        //this.stepTreeUpForDraw(nextBoard.whoWin, 0);
-                    //}
-                //}
-
-        }
-        else{
-            System.out.println("nextBoard = null !");
-            Tictactoe.sec(10);
-        }
-
-        if(movesList != null){
             for (Move nextMove : movesList) {
                 nextMove.tryStepTreeDownForLose();
             }
         }
+    }
+
+    public void try2StepTreeUpForLose(int prior){
+        //System.out.println("============= inside ST Up");
+            if(-prior < priority) priority = -prior;
+        if ((preMove != null) && (preMove.preMove != null)) preMove.preMove.try2StepTreeUpForLose(prior - 1);
     }
 
     public void tryStepTreeDownForWin(){
@@ -192,9 +186,9 @@ public class Move {
 
             if (nextBoard.whoWin != Cell.emptyCell.filling) {
 
-                if(nextBoard.whoWin != cell.filling){
+                if(nextBoard.whoWin == cell.filling){
                     //System.out.println("=================== Loose");
-                    this.try2StepTreeUpForWin(9);
+                    try2StepTreeUpForWin(9);
                 }
 
             }
@@ -220,15 +214,10 @@ public class Move {
         }
     }
 
-    public void try2StepTreeUpForLose(int prior){
-        //System.out.println("============= inside ST Up");
-            if(-prior < priority) priority = -prior;
-        if ((preMove != null) && (preMove.preMove != null)) preMove.preMove.try2StepTreeUpForLose(prior - 1);
-    }
-
     public void try2StepTreeUpForWin(int prior){
         //System.out.println("============= inside ST Up");
-        if(prior > priority) priority = prior;
+        //if(prior > priority) priority = prior;
+        priority = priority + prior;
         if ((preMove != null) && (preMove.preMove != null)) preMove.preMove.try2StepTreeUpForWin(prior - 1);
     }
 
