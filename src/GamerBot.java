@@ -73,9 +73,22 @@ int random = (int)(Math.random() * (bestMovesList.size()));
 
         System.out.println("priority step " + nextMove.index.horizontal + "." + nextMove.index.vertical);
 
-        Move blockMove = board.block(nextMove.cell, nextMove, board);
-        System.out.println("win step " + nextMove.index.horizontal + "." + nextMove.index.vertical);
+        Move winMove = board.obtainWinMove(nextMove, board);
+        if(winMove != null) {
+            System.out.println("win step " + winMove.index.horizontal + "." + winMove.index.vertical);
+            return winMove;
+        }
 
+        Move blockMove = board.obtainBlockMove(nextMove, board);
+        if(blockMove != null) {
+            System.out.println("block step " + blockMove.index.horizontal + "." + blockMove.index.vertical);
+            return blockMove;
+        }
+
+
+
+
+/*
         if((blockMove.index.horizontal != nextMove.index.horizontal) || (blockMove.index.vertical != nextMove.index.vertical)){
 
             // проблема - board.block выдает занятые клетки!
@@ -89,6 +102,8 @@ int random = (int)(Math.random() * (bestMovesList.size()));
                 System.out.println("busy " + blockMove.index.horizontal + "." + blockMove.index.vertical);
             }
         }
+*/
+
         System.out.println("I step " + nextMove.index.horizontal + "." + nextMove.index.vertical);
         return nextMove;
     }
