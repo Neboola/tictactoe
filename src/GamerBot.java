@@ -1,0 +1,98 @@
+import java.util.ArrayList;
+
+/**
+ * Created by Neboola on 27.10.2015.
+ */
+public class GamerBot extends Gamer {
+
+    Cell cell;
+
+    GamerBot(Cell cell){
+        super(cell);
+        this.cell = super.cell;
+    }
+
+    public Move getMove(Board board, int level){
+        System.out.println(cell.filling + " thinking...");
+
+        Move previousMove = new Move();
+
+        Move nextMove = new Move();
+        nextMove.cell = cell;
+
+        if(cell == Cell.xCell){
+            previousMove.cell = Cell.oCell;
+        }
+        else if(cell == Cell.oCell){
+            previousMove.cell = Cell.xCell;
+        }
+
+
+        previousMove.nextBoard = board;
+
+
+
+        Move root = previousMove.getRoot(level);
+        //System.out.println(root.cell.filling + ": I'm thinking!");
+
+        int bestPriority = -9;
+        for(Move move : root.movesList){
+            System.out.println(move.cell.filling + ": maybee there?  " + move.index.horizontal + move.index.vertical);
+            System.out.println("Priority is " + move.priority);
+            if(move.priority > bestPriority) {
+                bestPriority = move.priority;
+                System.out.println(move.cell.filling + ": better to "+ move.index.horizontal + move.index.vertical);
+
+            }
+
+        }
+        System.out.println();
+
+        ArrayList bestMovesList = new ArrayList<Move>();
+
+        for(Move move1 : root.movesList){
+            if(move1.priority == bestPriority) {
+                bestMovesList.add(move1);
+                System.out.println(move1.cell.filling + ": I can go there "+ move1.index.horizontal + move1.index.vertical);
+                System.out.println("Priority is " + move1.priority);
+            }
+        }
+
+int random = (int)(Math.random() * (bestMovesList.size()));
+
+//random
+
+
+        nextMove = (Move)bestMovesList.get(random);
+
+
+
+
+
+
+
+        System.out.println("priority step " + nextMove.index.horizontal + "." + nextMove.index.vertical);
+
+        Move blockMove = board.block(nextMove.cell, nextMove, board);
+        System.out.println("win step " + nextMove.index.horizontal + "." + nextMove.index.vertical);
+
+        if((blockMove.index.horizontal != nextMove.index.horizontal) || (blockMove.index.vertical != nextMove.index.vertical)){
+
+            // проблема - board.block выдает занятые клетки!
+            if(board.canMakeMove(blockMove)) {
+                System.out.println("I have to win: " + blockMove.index.horizontal + "." + blockMove.index.vertical);
+
+                return blockMove;
+
+            }
+            else{
+                System.out.println("busy " + blockMove.index.horizontal + "." + blockMove.index.vertical);
+            }
+        }
+        System.out.println("I step " + nextMove.index.horizontal + "." + nextMove.index.vertical);
+        return nextMove;
+    }
+
+
+
+}
