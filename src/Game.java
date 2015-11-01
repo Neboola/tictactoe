@@ -1,7 +1,7 @@
 import java.io.IOException;
 
 /**
- * Created by Neboola on 27.10.2015.
+ * Created by Regina on 27.10.2015.
  */
 public class Game {
 
@@ -16,17 +16,11 @@ public class Game {
         this.gamerX = gamerX;
         this.gamerO = gamerO;
         this.level = level;
-
     }
 
     public void processGame() throws IOException {
 
-
-
-
-
         board.printBoardPG();
-
 
         Move nextMove = new Move();
         nextMove.index = new Index();
@@ -63,25 +57,9 @@ public class Game {
 
                     board.printBoardPG();
                     System.out.println();
-
-
                 }
-
             }
-
-//]]]]]]]]]]]]
-
         }
-
-
     }
-
-
-
-
-
-
-
-
 
 }

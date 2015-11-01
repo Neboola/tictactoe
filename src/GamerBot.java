@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 /**
- * Created by Neboola on 27.10.2015.
+ * Created by Regina on 27.10.2015.
  */
 public class GamerBot extends Gamer {
 
@@ -27,10 +27,7 @@ public class GamerBot extends Gamer {
             previousMove.cell = Cell.xCell;
         }
 
-
         previousMove.nextBoard = board;
-
-
 
         Move root = previousMove.getRoot(level);
         //System.out.println(root.cell.filling + ": I'm thinking!");
@@ -41,10 +38,8 @@ public class GamerBot extends Gamer {
             System.out.println("Priority is " + move.priority);
             if(move.priority > bestPriority) {
                 bestPriority = move.priority;
-                System.out.println(move.cell.filling + ": better to "+ move.index.horizontal + move.index.vertical);
-
+                //System.out.println(move.cell.filling + ": better to "+ move.index.horizontal + move.index.vertical);
             }
-
         }
         System.out.println();
 
@@ -107,7 +102,5 @@ int random = (int)(Math.random() * (bestMovesList.size()));
 
         return nextMove;
     }
-
-
 
 }

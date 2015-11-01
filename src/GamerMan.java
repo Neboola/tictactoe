@@ -3,12 +3,11 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 
 /**
- * Created by Neboola on 27.10.2015.
+ * Created by Regina on 27.10.2015.
  */
 public class GamerMan extends Gamer {
 
     Cell cell;
-
 
     GamerMan(Cell cell){
 

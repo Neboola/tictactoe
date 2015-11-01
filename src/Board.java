@@ -2,17 +2,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Neboola on 22.10.2015.
+ * Created by Regina on 22.10.2015.
  */
 public class Board {
 
-
     public String boardLine;
-
     public char whoWin;
-
     public HashMap<Index, Cell> map;
-
 
     Board() {
 
@@ -36,7 +32,6 @@ public class Board {
         //System.out.println();
 
     }
-
 
     Board(Board prevBoard, Move move) {
 
@@ -72,9 +67,7 @@ public class Board {
         int counterXO;
         Index currentIndex = new Index();
 
-
         //System.out.println("check vertical lines");
-
         for (int h = 1; h < 4; h++) {
             counterXO = 0;
 
@@ -86,22 +79,14 @@ public class Board {
 
                     if((index.horizontal == h) && (index.vertical == v)){
 
-
-
                         if(entry.getValue() == targetCell) counterXO++;
                         else {
                             currentIndex.horizontal = h;
                             currentIndex.vertical = v;
-
                         }
-
                     }
-
                 }
-
             }
-
-
 
             if (counterXO == 2) {
                 nextMove.index = currentIndex;
@@ -113,20 +98,12 @@ public class Board {
                      return nextMove;
                  }
                 //else System.out.println("cant go to " + nextMove.index.horizontal + "," + nextMove.index.vertical);
-
             }
-
-
         }
 
-
         //System.out.println("check horizontal lines");
-
         for (int v = 1; v < 4; v++) {
             counterXO = 0;
-
-
-
 
             for (int h = 1; h < 4; h++) {
 
@@ -137,18 +114,13 @@ public class Board {
 
                     if((index.horizontal == h) && (index.vertical == v)){
 
-
-
                         if(entry.getValue() == targetCell) counterXO++;
                         else {
                             currentIndex.horizontal = h;
                             currentIndex.vertical = v;
                         }
-
                     }
-
                 }
-
             }
 
             if (counterXO == 2) {
@@ -161,13 +133,8 @@ public class Board {
                     return nextMove;
                 }
                 //else System.out.println("cant go to " + nextMove.index.horizontal + "," + nextMove.index.vertical);
-
             }
-
-
-
         }
-
 
         //System.out.println("check diagonal right-left line");
         counterXO = 0;
@@ -180,41 +147,30 @@ public class Board {
 
                 if((index.horizontal == hv) && (index.vertical == hv)){
 
-
-
                     if(entry.getValue() == targetCell) counterXO++;
                     else {
                         currentIndex.horizontal = hv;
                         currentIndex.vertical = hv;
                     }
-
                 }
-
             }
-
-            if (counterXO == 2) {
-                nextMove.index = currentIndex;
-                //System.out.println("counter = 2. win found? current h: " + currentIndex.horizontal + " v: " + currentIndex.vertical);
-                if(board.canMakeMove(nextMove)) {
-                    //System.out.println("win found!!! h: " + nextMove.index.horizontal + " v: " + nextMove.index.vertical);
-                    return nextMove;
-                }
-                //else System.out.println("cant go to " + nextMove.index.horizontal + "," + nextMove.index.vertical);
-
-            }
-
-
-
-
         }
 
+        if (counterXO == 2) {
+            nextMove.index = currentIndex;
+            //System.out.println("counter = 2. win found? current h: " + currentIndex.horizontal + " v: " + currentIndex.vertical);
+            if(board.canMakeMove(nextMove)) {
+                //System.out.println("win found!!! h: " + nextMove.index.horizontal + " v: " + nextMove.index.vertical);
+                return nextMove;
+            }
+            //else System.out.println("cant go to " + nextMove.index.horizontal + "," + nextMove.index.vertical);
+        }
 
-
-        //System.out.println("check diagonal left-right line");
+        System.out.println("check diagonal left-right line");
         counterXO = 0;
         for (int h = 1; h < 4; h++) {
             int v = 4 - h;
-            //System.out.println("h: " + h + " v: " + v);
+            System.out.println("h: " + h + " v: " + v);
 
 
             for(Map.Entry<Index, Cell> entry : map.entrySet()){
@@ -229,29 +185,23 @@ public class Board {
                         currentIndex.horizontal = h;
                         currentIndex.vertical = v;
                     }
-
                 }
-
             }
+        }
 
-
-            if (counterXO == 2) {
-                nextMove.index = currentIndex;
-                //System.out.println("counter = 2. win found? current h: " + currentIndex.horizontal + " v: " + currentIndex.vertical);
-                if(board.canMakeMove(nextMove)) {
-                    //System.out.println("win found!!! h: " + nextMove.index.horizontal + " v: " + nextMove.index.vertical);
-                    return nextMove;
-                }
-                //else System.out.println("cant go to " + nextMove.index.horizontal + "," + nextMove.index.vertical);
-
+        if (counterXO == 2) {
+            nextMove.index = currentIndex;
+            System.out.println("counter = 2. win found? current h: " + currentIndex.horizontal + " v: " + currentIndex.vertical);
+            if(board.canMakeMove(nextMove)) {
+                System.out.println("win found!!! h: " + nextMove.index.horizontal + " v: " + nextMove.index.vertical);
+                return nextMove;
             }
-
+            else System.out.println("cant go to " + nextMove.index.horizontal + "," + nextMove.index.vertical);
 
         }
 
         return null;
     }
-
 
     public Move obtainBlockMove(Move currentMove, Board board){
 
@@ -265,194 +215,20 @@ public class Board {
             if (currentMove.cell == Cell.xCell) {
                 targetCell = Cell.oCell;
             } else {
-                //System.out.println("Who steps???? Current steper is " + currentMove.cell.filling);
+                System.out.println("Who steps???? Current steper is " + currentMove.cell.filling);
                 Tictactoe.sec(10);
             }
         }
 
         Move nextMove = new Move(currentMove);
-
-        int counterXO;
-        Index currentIndex = new Index();
-        //System.out.println("check vertical lines");
-
-        for (int h = 1; h < 4; h++) {
-            counterXO = 0;
-
-            for (int v = 1; v < 4; v++) {
-                //System.out.println("h: " + h + " v: " + v);
-
-                for(Map.Entry<Index, Cell> entry : map.entrySet()){
-                    Index index = entry.getKey();
-
-                    if((index.horizontal == h) && (index.vertical == v)){
-
-
-
-                        if(entry.getValue() == targetCell) counterXO++;
-                        else {
-                            currentIndex.horizontal = h;
-                            currentIndex.vertical = v;
-
-                        }
-
-                    }
-
-                }
-
-            }
-
-
-
-            if (counterXO == 2) {
-                nextMove.index = currentIndex;
-                //System.out.println("counter = 2. block found? current h: " + currentIndex.horizontal + " v: " + currentIndex.vertical);
-
-                if(board.canMakeMove(nextMove)) {
-                    //System.out.println("block found!!! h: " + nextMove.index.horizontal + " v: " + nextMove.index.vertical);
-
-                    return nextMove;
-                }
-                //else System.out.println("cant go to " + nextMove.index.horizontal + "," + nextMove.index.vertical);
-
-            }
-
-
+        nextMove.cell = targetCell;
+        nextMove = obtainWinMove(nextMove, board);
+        if(nextMove != null){
+            nextMove.cell = currentMove.cell;
         }
+        return nextMove;
 
-        //System.out.println("check horizontal lines");
-
-        for (int v = 1; v < 4; v++) {
-            counterXO = 0;
-
-
-
-
-            for (int h = 1; h < 4; h++) {
-
-                //System.out.println("h: " + h + " v: " + v);
-
-                for(Map.Entry<Index, Cell> entry : map.entrySet()){
-                    Index index = entry.getKey();
-
-                    if((index.horizontal == h) && (index.vertical == v)){
-
-
-
-                        if(entry.getValue() == targetCell) counterXO++;
-                        else {
-                            currentIndex.horizontal = h;
-                            currentIndex.vertical = v;
-                        }
-
-                    }
-
-                }
-
-            }
-
-            if (counterXO == 2) {
-                nextMove.index = currentIndex;
-                //System.out.println("counter = 2. block found? current h: " + currentIndex.horizontal + " v: " + currentIndex.vertical);
-
-                if(board.canMakeMove(nextMove)) {
-                    //System.out.println("block found!!! h: " + nextMove.index.horizontal + " v: " + nextMove.index.vertical);
-
-                    return nextMove;
-                }
-                //else System.out.println("cant go to " + nextMove.index.horizontal + "," + nextMove.index.vertical);
-
-            }
-
-
-
-        }
-
-
-        //System.out.println("check diagonal right-left line");
-        counterXO = 0;
-        for (int hv = 1; hv < 4; hv++) {
-            //System.out.println("h: " + hv + " v: " + hv);
-
-
-            for(Map.Entry<Index, Cell> entry : map.entrySet()){
-                Index index = entry.getKey();
-
-                if((index.horizontal == hv) && (index.vertical == hv)){
-
-
-
-                    if(entry.getValue() == targetCell) counterXO++;
-                    else {
-                        currentIndex.horizontal = hv;
-                        currentIndex.vertical = hv;
-                    }
-
-                }
-
-            }
-
-            if (counterXO == 2) {
-                nextMove.index = currentIndex;
-                //System.out.println("counter = 2. block found? current h: " + currentIndex.horizontal + " v: " + currentIndex.vertical);
-                if(board.canMakeMove(nextMove)) {
-                    //System.out.println("block found!!! h: " + nextMove.index.horizontal + " v: " + nextMove.index.vertical);
-                    return nextMove;
-                }
-                //else System.out.println("cant go to " + nextMove.index.horizontal + "," + nextMove.index.vertical);
-
-            }
-
-
-
-
-        }
-
-
-        //System.out.println("check diagonal left-right line");
-        counterXO = 0;
-
-        for (int h = 1; h < 4; h++) {
-            int v = 4 - h;
-            //System.out.println("h: " + h + " v: " + v);
-
-
-
-            for(Map.Entry<Index, Cell> entry : map.entrySet()){
-                Index index = entry.getKey();
-
-                if((index.horizontal == h) && (index.vertical == v)){
-
-
-
-                    if(entry.getValue() == targetCell) counterXO++;
-                    else {
-                        currentIndex.horizontal = h;
-                        currentIndex.vertical = v;
-                    }
-
-                }
-
-            }
-
-
-            if (counterXO == 2) {
-                nextMove.index = currentIndex;
-                //System.out.println("counter = 2. block found? current h: " + currentIndex.horizontal + " v: " + currentIndex.vertical);
-                if(board.canMakeMove(nextMove)) {
-                    //System.out.println("block found!!! h: " + nextMove.index.horizontal + " v: " + nextMove.index.vertical);
-                    return nextMove;
-                }
-                //else System.out.println("cant go to " + nextMove.index.horizontal + "," + nextMove.index.vertical);
-
-            }
-
-
-        }
-
-        return null;
     }
-
 
     public void checkWin() {
 
@@ -621,9 +397,6 @@ public class Board {
 
     }
 
-
-
-
     public void printBoardPG() {
 
 
@@ -663,7 +436,6 @@ public class Board {
 
     }
 
-
     public char getCellFilling(int h, int v){
 
         Index indexKey = new Index(h, v);
@@ -676,15 +448,11 @@ public class Board {
                 break;
             }
 
-
-
         }
         return map.get(indexKey).filling;
 
 
     }
-
-
 
     public boolean isFull(){
 
@@ -698,13 +466,10 @@ public class Board {
                 full = false;
             }
 
-
-
         }
 
         return full;
     }
-
 
     public boolean canMakeMove(Move move){
         //Index moveIndex = move.index;
@@ -735,8 +500,6 @@ public class Board {
 
     public boolean makeMove(Move move){
 
-
-
         for (Map.Entry<Index, Cell> field : map.entrySet()) {
             Index indexKey = field.getKey();
             Cell cellValue = field.getValue();
@@ -750,11 +513,9 @@ public class Board {
                     return true;
                 }
 
-
             }
 
         }
-
 
         return true;
     }

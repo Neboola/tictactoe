@@ -1,12 +1,12 @@
 /**
- * Created by Neboola on 22.10.2015.
+ * Created by Regina on 22.10.2015.
  */
 public class Index {
+
     public int horizontal;
     public int vertical;
 
 /*
-
             3  | X | O | X |
                -------------
             2  | O | X | O |
@@ -14,7 +14,6 @@ public class Index {
             1  | X | O | X |
             v  -------------
             / h  1   2   3
-
 */
 
     Index(){

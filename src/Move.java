@@ -1,7 +1,7 @@
 import java.util.*;
 
 /**
- * Created by Neboola on 22.10.2015.
+ * Created by Regina on 22.10.2015.
  */
 public class Move {
 
@@ -14,9 +14,7 @@ public class Move {
     public int priority;
 
     Move(){
-
         this.priority = 0;
-
     }
 
     Move(Move move){
