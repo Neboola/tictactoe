@@ -20,11 +20,11 @@ public class GamerBot extends Gamer {
         Move nextMove = new Move();
         nextMove.cell = cell;
 
-        if(cell == Cell.xCell){
-            previousMove.cell = Cell.oCell;
+        if(cell == Cell.X){
+            previousMove.cell = Cell.O;
         }
-        else if(cell == Cell.oCell){
-            previousMove.cell = Cell.xCell;
+        else if(cell == Cell.O){
+            previousMove.cell = Cell.X;
         }
 
         previousMove.nextBoard = board;

@@ -12,7 +12,7 @@ public class Board {
 
     Board() {
 
-        whoWin = Cell.emptyCell;
+        whoWin = Cell._;
 
         map = new HashMap<Index, Cell>();
         //System.out.println("Board creation started");
@@ -21,7 +21,7 @@ public class Board {
         for (int i = 1; i < 4; i++) {
             for (int j = 1; j < 4; j++) {
 
-                map.put(new Index(i, j), Cell.emptyCell);
+                map.put(new Index(i, j), Cell._);
                 //System.out.println("Field created: " + i + "," + j);
 
             }
@@ -35,7 +35,7 @@ public class Board {
 
     Board(Board prevBoard, Move move) {
 
-        whoWin = Cell.emptyCell;
+        whoWin = Cell._;
 
         Index moveIndex = move.index;
         Cell moveCell = move.cell;
@@ -208,12 +208,12 @@ public class Board {
         //System.out.println("check obtainBlockMove =================");
 
         Cell targetCell = currentMove.cell;
-        if(currentMove.cell == Cell.oCell) {
-            targetCell = Cell.xCell;
+        if(currentMove.cell == Cell.O) {
+            targetCell = Cell.X;
         }
         else {
-            if (currentMove.cell == Cell.xCell) {
-                targetCell = Cell.oCell;
+            if (currentMove.cell == Cell.X) {
+                targetCell = Cell.O;
             } else {
                 System.out.println("Who steps????");
                 Tictactoe.sec(10);
@@ -252,8 +252,8 @@ public class Board {
                     if((index.horizontal == h) && (index.vertical == v)){
                         Cell cell = entry.getValue();
 
-                        if(cell == Cell.oCell) counterO++;
-                        if(cell == Cell.xCell) counterX++;
+                        if(cell == Cell.O) counterO++;
+                        if(cell == Cell.X) counterX++;
 
                     }
 
@@ -262,11 +262,11 @@ public class Board {
             }
 
             if (counterX == 3) {
-                whoWin = Cell.xCell;
+                whoWin = Cell.X;
 
             }
             if (counterO == 3) {
-                whoWin = Cell.oCell;
+                whoWin = Cell.O;
 
             }
 
@@ -288,8 +288,8 @@ public class Board {
                     if((index.horizontal == h) && (index.vertical == v)){
                         Cell cell = entry.getValue();
 
-                        if(cell == Cell.oCell) counterO++;
-                        if(cell == Cell.xCell) counterX++;
+                        if(cell == Cell.O) counterO++;
+                        if(cell == Cell.X) counterX++;
 
                     }
 
@@ -298,11 +298,11 @@ public class Board {
             }
 
             if (counterX == 3) {
-                whoWin = Cell.xCell;
+                whoWin = Cell.X;
 
             }
             if (counterO == 3) {
-                whoWin = Cell.oCell;
+                whoWin = Cell.O;
 
             }
 
@@ -327,8 +327,8 @@ public class Board {
                     if((index.horizontal == hv) && (index.vertical == hv)){
                         Cell cell = entry.getValue();
 
-                        if(cell == Cell.oCell) counterO++;
-                        if(cell == Cell.xCell) counterX++;
+                        if(cell == Cell.O) counterO++;
+                        if(cell == Cell.X) counterX++;
 
                     }
 
@@ -337,11 +337,11 @@ public class Board {
 
 
             if (counterX == 3) {
-                whoWin = Cell.xCell;
+                whoWin = Cell.X;
 
             }
             if (counterO == 3) {
-                whoWin = Cell.oCell;
+                whoWin = Cell.O;
 
             }
 
@@ -366,8 +366,8 @@ public class Board {
                 if((index.horizontal == h) && (index.vertical == v)){
                     Cell cell = entry.getValue();
 
-                    if(cell == Cell.oCell) counterO++;
-                    if(cell == Cell.xCell) counterX++;
+                    if(cell == Cell.O) counterO++;
+                    if(cell == Cell.X) counterX++;
 
                 }
 
@@ -376,11 +376,11 @@ public class Board {
 
 
             if (counterX == 3) {
-                whoWin = Cell.xCell;
+                whoWin = Cell.X;
 
             }
             if (counterO == 3) {
-                whoWin = Cell.oCell;
+                whoWin = Cell.O;
 
             }
 
@@ -416,7 +416,7 @@ public class Board {
 
 
 
-        if (whoWin != Cell.emptyCell) {
+        if (whoWin != Cell._) {
             System.out.println(whoWin + " WIN! ========================");
             System.out.println();
             System.out.println();
@@ -462,7 +462,7 @@ public class Board {
             //Index indexKey = field.getKey();
             Cell cellValue = field.getValue();
 
-            if (cellValue == Cell.emptyCell) {
+            if (cellValue == Cell._) {
                 full = false;
             }
 
@@ -481,7 +481,7 @@ public class Board {
             Cell cellValue = field.getValue();
 
             if ((move.index.horizontal == indexKey.horizontal) && (move.index.vertical == indexKey.vertical)) {
-                if(cellValue != Cell.emptyCell){
+                if(cellValue != Cell._){
                     return false;
                 }
                 else{
@@ -505,7 +505,7 @@ public class Board {
             Cell cellValue = field.getValue();
 
             if ((move.index.horizontal == indexKey.horizontal) && (move.index.vertical == indexKey.vertical)) {
-                if(cellValue != Cell.emptyCell){
+                if(cellValue != Cell._){
                     return false;
                 }
                 else{

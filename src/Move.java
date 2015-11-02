@@ -40,7 +40,7 @@ public class Move {
 
     public static Move treeRoot(){
         Move root = new Move();
-        root.cell = Cell.oCell;
+        root.cell = Cell.O;
         root.nextBoard = new Board();
         root.generateTree();
         root.generatePriorities();
@@ -63,11 +63,11 @@ public class Move {
         level--;
 
             Cell steper;
-            if(cell == Cell.oCell){
-                steper = Cell.xCell;
+            if(cell == Cell.O){
+                steper = Cell.X;
             }
             else{
-                steper = Cell.oCell;
+                steper = Cell.O;
             }
             //System.out.println("Steper is: " + steper.filling);
 
@@ -84,7 +84,7 @@ public class Move {
 
                 //================
 
-                if(cellValue == Cell.emptyCell){
+                if(cellValue == Cell._){
 
                     //System.out.println(indexKey.horizontal + "," + indexKey.vertical + " : is empty");
 
@@ -122,7 +122,7 @@ public class Move {
             nextMove.nextBoard.printBoardPG();
 */
 
-                if(nextMove.nextBoard.whoWin == Cell.emptyCell) nextMove.generateNextMoves(level);
+                if(nextMove.nextBoard.whoWin == Cell._) nextMove.generateNextMoves(level);
 
 
 
@@ -150,7 +150,7 @@ public class Move {
 
 
             for (Move nextMove : movesList) {
-                if (nextMove.nextBoard.whoWin != Cell.emptyCell) {
+                if (nextMove.nextBoard.whoWin != Cell._) {
 
                     if(nextMove.nextBoard.whoWin != cell){
                         //System.out.println("=================== Loose");
@@ -182,7 +182,7 @@ public class Move {
 
             //System.out.println("Board Line is: " + nextBoard.boardLine);
 
-            if (nextBoard.whoWin != Cell.emptyCell) {
+            if (nextBoard.whoWin != Cell._) {
 
                 if(nextBoard.whoWin == cell){
                     //System.out.println("=================== Loose");

@@ -25,14 +25,14 @@ public class Game {
 
         Move nextMove = new Move();
         nextMove.index = new Index();
-        nextMove.cell = Cell.oCell;
+        nextMove.cell = Cell.O;
 
-        while ((board.whoWin == Cell.emptyCell) && (!board.isFull())){
+        while ((board.whoWin == Cell._) && (!board.isFull())){
 
-            if(nextMove.cell == Cell.xCell){
+            if(nextMove.cell == Cell.X){
                 currentGamer = gamerO;
             }
-            else if(nextMove.cell == Cell.oCell){
+            else if(nextMove.cell == Cell.O){
                 currentGamer = gamerX;
             }
 
