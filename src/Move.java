@@ -84,7 +84,7 @@ public class Move {
 
                 //================
 
-                if(cellValue == Cell._){
+                if(cellValue == Cell.FREE){
 
                     //System.out.println(indexKey.horizontal + "," + indexKey.vertical + " : is empty");
 
@@ -122,7 +122,7 @@ public class Move {
             nextMove.nextBoard.printBoardPG();
 */
 
-                if(nextMove.nextBoard.whoWin == Cell._) nextMove.generateNextMoves(level);
+                if(nextMove.nextBoard.whoWin == Cell.FREE) nextMove.generateNextMoves(level);
 
 
 
@@ -150,7 +150,7 @@ public class Move {
 
 
             for (Move nextMove : movesList) {
-                if (nextMove.nextBoard.whoWin != Cell._) {
+                if (nextMove.nextBoard.whoWin != Cell.FREE) {
 
                     if(nextMove.nextBoard.whoWin != cell){
                         //System.out.println("=================== Loose");
@@ -182,7 +182,7 @@ public class Move {
 
             //System.out.println("Board Line is: " + nextBoard.boardLine);
 
-            if (nextBoard.whoWin != Cell._) {
+            if (nextBoard.whoWin != Cell.FREE) {
 
                 if(nextBoard.whoWin == cell){
                     //System.out.println("=================== Loose");

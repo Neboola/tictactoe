@@ -4,14 +4,14 @@
 public enum Cell {
 
     //private char filling;
-    _,
+    FREE,
     X,
     O;
 
     @Override
     public String toString() {
         switch (this){
-            case _:
+            case FREE:
                 return " ";
             case X:
                 return "X";

@@ -12,7 +12,7 @@ public class Board {
 
     Board() {
 
-        whoWin = Cell._;
+        whoWin = Cell.FREE;
 
         map = new HashMap<Index, Cell>();
         //System.out.println("Board creation started");
@@ -21,7 +21,7 @@ public class Board {
         for (int i = 1; i < 4; i++) {
             for (int j = 1; j < 4; j++) {
 
-                map.put(new Index(i, j), Cell._);
+                map.put(new Index(i, j), Cell.FREE);
                 //System.out.println("Field created: " + i + "," + j);
 
             }
@@ -35,7 +35,7 @@ public class Board {
 
     Board(Board prevBoard, Move move) {
 
-        whoWin = Cell._;
+        whoWin = Cell.FREE;
 
         Index moveIndex = move.index;
         Cell moveCell = move.cell;
@@ -416,7 +416,7 @@ public class Board {
 
 
 
-        if (whoWin != Cell._) {
+        if (whoWin != Cell.FREE) {
             System.out.println(whoWin + " WIN! ========================");
             System.out.println();
             System.out.println();
@@ -462,7 +462,7 @@ public class Board {
             //Index indexKey = field.getKey();
             Cell cellValue = field.getValue();
 
-            if (cellValue == Cell._) {
+            if (cellValue == Cell.FREE) {
                 full = false;
             }
 
@@ -481,7 +481,7 @@ public class Board {
             Cell cellValue = field.getValue();
 
             if ((move.index.horizontal == indexKey.horizontal) && (move.index.vertical == indexKey.vertical)) {
-                if(cellValue != Cell._){
+                if(cellValue != Cell.FREE){
                     return false;
                 }
                 else{
@@ -505,7 +505,7 @@ public class Board {
             Cell cellValue = field.getValue();
 
             if ((move.index.horizontal == indexKey.horizontal) && (move.index.vertical == indexKey.vertical)) {
-                if(cellValue != Cell._){
+                if(cellValue != Cell.FREE){
                     return false;
                 }
                 else{

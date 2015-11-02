@@ -27,7 +27,7 @@ public class Game {
         nextMove.index = new Index();
         nextMove.cell = Cell.O;
 
-        while ((board.whoWin == Cell._) && (!board.isFull())){
+        while ((board.whoWin == Cell.FREE) && (!board.isFull())){
 
             if(nextMove.cell == Cell.X){
                 currentGamer = gamerO;
