@@ -27,7 +27,7 @@ public class Game {
         nextMove.index = new Index();
         nextMove.cell = Cell.oCell;
 
-        while ((board.whoWin == Cell.emptyCell.filling) && (!board.isFull())){
+        while ((board.whoWin == Cell.emptyCell) && (!board.isFull())){
 
             if(nextMove.cell == Cell.xCell){
                 currentGamer = gamerO;
@@ -46,7 +46,7 @@ public class Game {
                     board.makeMove(nextMove);
                     board.checkWin();
 
-                    System.out.println(currentGamer.cell.filling + " steps to " + nextMove.index.horizontal + "." + nextMove.index.vertical);
+                    System.out.println(currentGamer.cell + " steps to " + nextMove.index.horizontal + "." + nextMove.index.vertical);
 
                     System.out.println();
                     board.printBoardPG();

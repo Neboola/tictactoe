@@ -63,7 +63,7 @@ public class Move {
         level--;
 
             Cell steper;
-            if(cell.filling == Cell.oCell.filling){
+            if(cell == Cell.oCell){
                 steper = Cell.xCell;
             }
             else{
@@ -122,7 +122,7 @@ public class Move {
             nextMove.nextBoard.printBoardPG();
 */
 
-                if(nextMove.nextBoard.whoWin == Cell.emptyCell.filling) nextMove.generateNextMoves(level);
+                if(nextMove.nextBoard.whoWin == Cell.emptyCell) nextMove.generateNextMoves(level);
 
 
 
@@ -150,9 +150,9 @@ public class Move {
 
 
             for (Move nextMove : movesList) {
-                if (nextMove.nextBoard.whoWin != Cell.emptyCell.filling) {
+                if (nextMove.nextBoard.whoWin != Cell.emptyCell) {
 
-                    if(nextMove.nextBoard.whoWin != cell.filling){
+                    if(nextMove.nextBoard.whoWin != cell){
                         //System.out.println("=================== Loose");
                         try2StepTreeUpForLose(9);
                         break;
@@ -182,9 +182,9 @@ public class Move {
 
             //System.out.println("Board Line is: " + nextBoard.boardLine);
 
-            if (nextBoard.whoWin != Cell.emptyCell.filling) {
+            if (nextBoard.whoWin != Cell.emptyCell) {
 
-                if(nextBoard.whoWin == cell.filling){
+                if(nextBoard.whoWin == cell){
                     //System.out.println("=================== Loose");
                     try2StepTreeUpForWin(9);
                 }

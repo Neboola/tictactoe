@@ -23,7 +23,7 @@ public class GamerMan extends Gamer {
         nextMove.cell = cell;
 
 
-        System.out.println(nextMove.cell.filling + " will step to");
+        System.out.println(nextMove.cell + " will step to");
 
         while(true){
             System.out.println("H: ");

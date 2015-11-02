@@ -7,12 +7,12 @@ import java.util.Map;
 public class Board {
 
     public String boardLine;
-    public char whoWin;
+    Cell whoWin;
     public HashMap<Index, Cell> map;
 
     Board() {
 
-        whoWin = Cell.emptyCell.filling;
+        whoWin = Cell.emptyCell;
 
         map = new HashMap<Index, Cell>();
         //System.out.println("Board creation started");
@@ -35,7 +35,7 @@ public class Board {
 
     Board(Board prevBoard, Move move) {
 
-        whoWin = Cell.emptyCell.filling;
+        whoWin = Cell.emptyCell;
 
         Index moveIndex = move.index;
         Cell moveCell = move.cell;
@@ -215,7 +215,7 @@ public class Board {
             if (currentMove.cell == Cell.xCell) {
                 targetCell = Cell.oCell;
             } else {
-                System.out.println("Who steps???? Current steper is " + currentMove.cell.filling);
+                System.out.println("Who steps????");
                 Tictactoe.sec(10);
             }
         }
@@ -262,11 +262,11 @@ public class Board {
             }
 
             if (counterX == 3) {
-                whoWin = 'X';
+                whoWin = Cell.xCell;
 
             }
             if (counterO == 3) {
-                whoWin = 'O';
+                whoWin = Cell.oCell;
 
             }
 
@@ -298,11 +298,11 @@ public class Board {
             }
 
             if (counterX == 3) {
-                whoWin = 'X';
+                whoWin = Cell.xCell;
 
             }
             if (counterO == 3) {
-                whoWin = 'O';
+                whoWin = Cell.oCell;
 
             }
 
@@ -337,11 +337,11 @@ public class Board {
 
 
             if (counterX == 3) {
-                whoWin = 'X';
+                whoWin = Cell.xCell;
 
             }
             if (counterO == 3) {
-                whoWin = 'O';
+                whoWin = Cell.oCell;
 
             }
 
@@ -376,11 +376,11 @@ public class Board {
 
 
             if (counterX == 3) {
-                whoWin = 'X';
+                whoWin = Cell.xCell;
 
             }
             if (counterO == 3) {
-                whoWin = 'O';
+                whoWin = Cell.oCell;
 
             }
 
@@ -416,7 +416,7 @@ public class Board {
 
 
 
-        if (whoWin != Cell.emptyCell.filling) {
+        if (whoWin != Cell.emptyCell) {
             System.out.println(whoWin + " WIN! ========================");
             System.out.println();
             System.out.println();
@@ -435,8 +435,8 @@ public class Board {
         //Tictactoe.sec(1);
 
     }
-
-    public char getCellFilling(int h, int v){
+// Delete Filling
+    public Cell getCellFilling(int h, int v){
 
         Index indexKey = new Index(h, v);
 
@@ -449,7 +449,7 @@ public class Board {
             }
 
         }
-        return map.get(indexKey).filling;
+        return map.get(indexKey);
 
 
     }
