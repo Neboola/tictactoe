@@ -6,8 +6,8 @@ import java.util.Map;
  */
 public class Board {
 
-    public String boardLine;
-    Cell whoWin;
+    //public String boardLine;
+    public Cell whoWin;
     public HashMap<Index, Cell> map;
 
     Board() {
@@ -27,7 +27,8 @@ public class Board {
             }
         }
 
-        boardLine = "1";
+        //boardLine = "1";
+
         //System.out.println("Board creation finished. Board line is: " + boardLine);
         //System.out.println();
 

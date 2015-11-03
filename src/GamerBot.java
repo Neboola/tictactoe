@@ -5,11 +5,11 @@ import java.util.ArrayList;
  */
 public class GamerBot extends Gamer {
 
-    Cell cell;
+    private Cell cell;
 
     GamerBot(Cell cell){
         super(cell);
-        this.cell = super.cell;
+        this.cell = cell;
     }
 
     public Move getMove(Board board, int level){

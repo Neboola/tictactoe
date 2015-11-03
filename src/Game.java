@@ -5,11 +5,11 @@ import java.io.IOException;
  */
 public class Game {
 
-    public Board board;
-    public Gamer gamerX;
-    public Gamer gamerO;
-    public Gamer currentGamer;
-    int level;
+    private Board board;
+    private Gamer gamerX;
+    private Gamer gamerO;
+    private Gamer currentGamer;
+    private int level;
 
     Game(Gamer gamerX, Gamer gamerO, int level){
         board = new Board();
@@ -46,7 +46,7 @@ public class Game {
                     board.makeMove(nextMove);
                     board.checkWin();
 
-                    System.out.println(currentGamer.cell + " steps to " + nextMove.index.horizontal + "." + nextMove.index.vertical);
+                    System.out.println(currentGamer + " steps to " + nextMove.index.horizontal + "." + nextMove.index.vertical);
 
                     System.out.println();
                     board.printBoardPG();

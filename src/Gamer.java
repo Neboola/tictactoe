@@ -5,12 +5,17 @@ import java.io.IOException;
  */
 public abstract class Gamer {
 
-    Cell cell;
+    private Cell cell;
 
     Gamer(Cell cell){
         this.cell = cell;
     }
 
     public abstract Move getMove(Board board, int level) throws IOException;
+
+    @Override
+    public String toString(){
+        return cell.toString();
+    }
 
 }

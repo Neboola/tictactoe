@@ -5,7 +5,7 @@ import java.util.*;
  */
 public class Move {
 
-    public static int counter;
+    //public static int counter;
     public Move preMove;
     public Index index;
     public Cell cell;
@@ -76,7 +76,7 @@ public class Move {
             HashMap<Index, Cell> map = nextBoard.map;
 
 
-            int j = 1;
+            //int j = 1;
             for(Map.Entry<Index, Cell> field : map.entrySet()){
                 Index indexKey = field.getKey();
 
@@ -92,11 +92,11 @@ public class Move {
                     Move newMove = new Move(indexKey, steper, this);
                     newMove.nextBoard = new Board(nextBoard, newMove);
                     newMove.nextBoard.checkWin();
-                    newMove.nextBoard.boardLine = nextBoard.boardLine + "." + j;
+                    //newMove.nextBoard.boardLine = nextBoard.boardLine + "." + j;
                     movesList.add(newMove);
 
-                    j++;
-                    counter++;
+                    //j++;
+                    //counter++;
                     //System.out.println("New move added: " + nextBoard.boardLine + "." + k + "    Move# " + counter);
 
                 }
