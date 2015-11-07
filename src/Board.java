@@ -9,7 +9,7 @@ public class Board {
     //public String boardLine;
     public Cell whoWin;
     public HashMap<Index, Cell> map;
-
+//=
     Board() {
 
         whoWin = Cell.FREE;

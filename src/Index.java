@@ -5,7 +5,7 @@ public class Index {
 
     public static int startIndex = 1;
     public static int endIndex = 3;
-
+//=
     public int horizontal;
     public int vertical;
 
