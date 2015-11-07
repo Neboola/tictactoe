@@ -18,8 +18,8 @@ public class Board {
         //System.out.println("Board creation started");
 
 
-        for (int i = Index.startIndex; i <= Index.endIndex; i++) {
-            for (int j = Index.startIndex; j <= Index.endIndex; j++) {
+        for (int i = 0; i <= Index.endIndex; i++) {
+            for (int j = 0; j <= Index.endIndex; j++) {
 
                 map.put(new Index(i, j), Cell.FREE);
                 //System.out.println("Field created: " + i + "," + j);
@@ -71,10 +71,10 @@ public class Board {
         Index currentIndex = new Index();
 
         //System.out.println("check vertical lines");
-        for (int h = Index.startIndex; h <= Index.endIndex; h++) {
+        for (int h = 0; h <= Index.endIndex; h++) {
             counterXO = 0;
 
-            for (int v = Index.startIndex; v <= Index.endIndex; v++) {
+            for (int v = 0; v <= Index.endIndex; v++) {
                 //System.out.println("h: " + h + " v: " + v);
 
                 for(Map.Entry<Index, Cell> entry : map.entrySet()){
@@ -105,10 +105,10 @@ public class Board {
         }
 
         //System.out.println("check horizontal lines");
-        for (int v = Index.startIndex; v <= Index.endIndex; v++) {
+        for (int v = 0; v <= Index.endIndex; v++) {
             counterXO = 0;
 
-            for (int h = Index.startIndex; h <= Index.endIndex; h++) {
+            for (int h = 0; h <= Index.endIndex; h++) {
 
                 //System.out.println("h: " + h + " v: " + v);
 
@@ -141,7 +141,7 @@ public class Board {
 
         //System.out.println("check diagonal right-left line");
         counterXO = 0;
-        for (int hv = Index.startIndex; hv <= Index.endIndex; hv++) {
+        for (int hv = 0; hv <= Index.endIndex; hv++) {
             //System.out.println("h: " + hv + " v: " + hv);
 
 
@@ -171,8 +171,8 @@ public class Board {
 
         //System.out.println("check diagonal left-right line");
         counterXO = 0;
-        for (int h = Index.startIndex; h <= Index.endIndex; h++) {
-            int v = Index.endIndex + 1 - h;
+        for (int h = 0; h <= Index.endIndex; h++) {
+            int v = Index.endIndex - h;
             //System.out.println("h: " + h + " v: " + v);
 
 
@@ -244,12 +244,12 @@ public class Board {
 
 
 
-        for (int h = Index.startIndex; h <= Index.endIndex; h++) {
+        for (int h = 0; h <= Index.endIndex; h++) {
 
              counterX = 0;
              counterO = 0;
 
-            for (int v = Index.startIndex; v <= Index.endIndex; v++) {
+            for (int v = 0; v <= Index.endIndex; v++) {
 
                 for(Map.Entry<Index, Cell> entry : map.entrySet()){
                     Index index = entry.getKey();
@@ -280,12 +280,12 @@ public class Board {
 
 
 
-        for (int v = Index.startIndex; v <= Index.endIndex; v++) {
+        for (int v = 0; v <= Index.endIndex; v++) {
 
              counterX = 0;
              counterO = 0;
 
-            for (int h = Index.startIndex; h <= Index.endIndex; h++) {
+            for (int h = 0; h <= Index.endIndex; h++) {
 
                 for(Map.Entry<Index, Cell> entry : map.entrySet()){
                     Index index = entry.getKey();
@@ -318,7 +318,7 @@ public class Board {
         counterO = 0;
 
 
-        for (int hv = Index.startIndex; hv <= Index.endIndex; hv++) {
+        for (int hv = 0; hv <= Index.endIndex; hv++) {
 
 
 
@@ -356,8 +356,8 @@ public class Board {
         counterX = 0;
         counterO = 0;
 
-        for (int h = Index.startIndex; h <= Index.endIndex; h++) {
-            int v = Index.endIndex + 1 - h;
+        for (int h = 0; h <= Index.endIndex; h++) {
+            int v = Index.endIndex - h;
 
 
 
@@ -407,9 +407,9 @@ public class Board {
 
 
 
-        for (int j = Index.endIndex; j >= Index.startIndex; j--) {
-            System.out.print(j + "  | ");
-            for (int i = Index.startIndex; i <= Index.endIndex; i++) {
+        for (int j = Index.endIndex; j >= 0; j--) {
+            System.out.print(j + 1 + "  | ");
+            for (int i = 0; i <= Index.endIndex; i++) {
 
                 System.out.print(getCellFilling(i, j) + " | ");
             }

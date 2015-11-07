@@ -26,8 +26,8 @@ public class GamerMan extends Gamer {
 
         while(true){
             System.out.println("H: ");
-            nextMove.index.horizontal = Integer.parseInt(reader.readLine());
-            if((nextMove.index.horizontal >= Index.startIndex) && (nextMove.index.horizontal <= Index.endIndex)){
+            nextMove.index.horizontal = Integer.parseInt(reader.readLine()) - 1;
+            if((nextMove.index.horizontal >= 0) && (nextMove.index.horizontal <= Index.endIndex)){
                 break;
             }
             else{
@@ -38,8 +38,8 @@ public class GamerMan extends Gamer {
 
         while(true){
             System.out.println("V: ");
-            nextMove.index.vertical = Integer.parseInt(reader.readLine());
-            if((nextMove.index.vertical >= Index.startIndex) && (nextMove.index.vertical <= Index.endIndex)){
+            nextMove.index.vertical = Integer.parseInt(reader.readLine()) - 1;
+            if((nextMove.index.vertical >= 0) && (nextMove.index.vertical <= Index.endIndex)){
                 break;
             }
             else{

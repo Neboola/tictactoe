@@ -3,20 +3,21 @@
  */
 public class Index {
 
-    public static int startIndex = 1;
-    public static int endIndex = 3;
+    public static int endIndex = 2;
+
+
 //=
     public int horizontal;
     public int vertical;
 
 /*
-            3  | X | O | X |
+            2  | X | O | X |
                -------------
-            2  | O | X | O |
+            1  | O | X | O |
                -------------
-            1  | X | O | X |
+            0  | X | O | X |
             v  -------------
-            / h  1   2   3
+            / h  0   1   2
 */
 
     Index(){
