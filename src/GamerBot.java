@@ -32,10 +32,10 @@ public class GamerBot extends Gamer {
         Move root = previousMove.getRoot(level);
         //System.out.println(root.cell.filling + ": I'm thinking!");
 
-        int bestPriority = -10;
+        int bestPriority = -100;
         for(Move move : root.movesList){
-            //System.out.println(move.cell.filling + ": maybee there?  " + move.index.horizontal + move.index.vertical);
-            //System.out.println("Priority is " + move.priority);
+            System.out.println(move.cell + ": maybee there?  " + move.index.horizontal + move.index.vertical);
+            System.out.println("Priority is " + move.priority);
             if(move.priority > bestPriority) {
                 bestPriority = move.priority;
                 //System.out.println(move.cell.filling + ": better to "+ move.index.horizontal + move.index.vertical);
@@ -47,8 +47,8 @@ public class GamerBot extends Gamer {
         for(Move move1 : root.movesList){
             if(move1.priority == bestPriority) {
                 bestMovesList.add(move1);
-                //System.out.println(move1.cell.filling + ": I can go there "+ move1.index.horizontal + move1.index.vertical);
-                //System.out.println("Priority is " + move1.priority);
+                System.out.println(move1.cell + ": I can go there "+ move1.index.horizontal + move1.index.vertical);
+                System.out.println("Priority is " + move1.priority);
             }
         }
 

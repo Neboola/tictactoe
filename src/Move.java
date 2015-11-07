@@ -154,7 +154,7 @@ public class Move {
 
                     if(nextMove.nextBoard.whoWin != cell){
                         //System.out.println("=================== Loose");
-                        try2StepTreeUpForLose(9);
+                        try2StepTreeUpForLose(18);
                         break;
                     }
 
@@ -170,7 +170,7 @@ public class Move {
 
     public void try2StepTreeUpForLose(int prior){
         //System.out.println("============= inside ST Up");
-            if(-prior < priority) priority = -prior;
+            priority = priority - prior;
         if ((preMove != null) && (preMove.preMove != null)) preMove.preMove.try2StepTreeUpForLose(prior - 1);
     }
 
