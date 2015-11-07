@@ -18,8 +18,8 @@ public class Board {
         //System.out.println("Board creation started");
 
 
-        for (int i = 1; i < 4; i++) {
-            for (int j = 1; j < 4; j++) {
+        for (int i = Index.startIndex; i <= Index.endIndex; i++) {
+            for (int j = Index.startIndex; j <= Index.endIndex; j++) {
 
                 map.put(new Index(i, j), Cell.FREE);
                 //System.out.println("Field created: " + i + "," + j);
@@ -58,6 +58,8 @@ public class Board {
     }
 
     public Move obtainWinMove(Move currentMove, Board board){
+        
+        int targetCount = 2;
 
         //System.out.println("check obtainWinMove =================");
 
@@ -69,10 +71,10 @@ public class Board {
         Index currentIndex = new Index();
 
         //System.out.println("check vertical lines");
-        for (int h = 1; h < 4; h++) {
+        for (int h = Index.startIndex; h <= Index.endIndex; h++) {
             counterXO = 0;
 
-            for (int v = 1; v < 4; v++) {
+            for (int v = Index.startIndex; v <= Index.endIndex; v++) {
                 //System.out.println("h: " + h + " v: " + v);
 
                 for(Map.Entry<Index, Cell> entry : map.entrySet()){
@@ -89,7 +91,7 @@ public class Board {
                 }
             }
 
-            if (counterXO == 2) {
+            if (counterXO == targetCount) {
                 nextMove.index = currentIndex;
                 //System.out.println("counter = 2. win found? current h: " + currentIndex.horizontal + " v: " + currentIndex.vertical);
 
@@ -103,10 +105,10 @@ public class Board {
         }
 
         //System.out.println("check horizontal lines");
-        for (int v = 1; v < 4; v++) {
+        for (int v = Index.startIndex; v <= Index.endIndex; v++) {
             counterXO = 0;
 
-            for (int h = 1; h < 4; h++) {
+            for (int h = Index.startIndex; h <= Index.endIndex; h++) {
 
                 //System.out.println("h: " + h + " v: " + v);
 
@@ -124,7 +126,7 @@ public class Board {
                 }
             }
 
-            if (counterXO == 2) {
+            if (counterXO == targetCount) {
                 nextMove.index = currentIndex;
                 //System.out.println("counter = 2. win found? current h: " + currentIndex.horizontal + " v: " + currentIndex.vertical);
 
@@ -139,7 +141,7 @@ public class Board {
 
         //System.out.println("check diagonal right-left line");
         counterXO = 0;
-        for (int hv = 1; hv < 4; hv++) {
+        for (int hv = Index.startIndex; hv <= Index.endIndex; hv++) {
             //System.out.println("h: " + hv + " v: " + hv);
 
 
@@ -157,7 +159,7 @@ public class Board {
             }
         }
 
-        if (counterXO == 2) {
+        if (counterXO == targetCount) {
             nextMove.index = currentIndex;
             //System.out.println("counter = 2. win found? current h: " + currentIndex.horizontal + " v: " + currentIndex.vertical);
             if(board.canMakeMove(nextMove)) {
@@ -169,8 +171,8 @@ public class Board {
 
         //System.out.println("check diagonal left-right line");
         counterXO = 0;
-        for (int h = 1; h < 4; h++) {
-            int v = 4 - h;
+        for (int h = Index.startIndex; h <= Index.endIndex; h++) {
+            int v = Index.endIndex + 1 - h;
             //System.out.println("h: " + h + " v: " + v);
 
 
@@ -190,7 +192,7 @@ public class Board {
             }
         }
 
-        if (counterXO == 2) {
+        if (counterXO == targetCount) {
             nextMove.index = currentIndex;
             //System.out.println("counter = 2. win found? current h: " + currentIndex.horizontal + " v: " + currentIndex.vertical);
             if(board.canMakeMove(nextMove)) {
@@ -233,6 +235,8 @@ public class Board {
 
     public void checkWin() {
 
+        int targetCount = 3;
+
         int counterX;
         int counterO;
 
@@ -240,12 +244,12 @@ public class Board {
 
 
 
-        for (int h = 1; h < 4; h++) {
+        for (int h = Index.startIndex; h <= Index.endIndex; h++) {
 
              counterX = 0;
              counterO = 0;
 
-            for (int v = 1; v < 4; v++) {
+            for (int v = Index.startIndex; v <= Index.endIndex; v++) {
 
                 for(Map.Entry<Index, Cell> entry : map.entrySet()){
                     Index index = entry.getKey();
@@ -262,11 +266,11 @@ public class Board {
 
             }
 
-            if (counterX == 3) {
+            if (counterX == targetCount) {
                 whoWin = Cell.X;
 
             }
-            if (counterO == 3) {
+            if (counterO == targetCount) {
                 whoWin = Cell.O;
 
             }
@@ -276,12 +280,12 @@ public class Board {
 
 
 
-        for (int v = 1; v < 4; v++) {
+        for (int v = Index.startIndex; v <= Index.endIndex; v++) {
 
              counterX = 0;
              counterO = 0;
 
-            for (int h = 1; h < 4; h++) {
+            for (int h = Index.startIndex; h <= Index.endIndex; h++) {
 
                 for(Map.Entry<Index, Cell> entry : map.entrySet()){
                     Index index = entry.getKey();
@@ -298,11 +302,11 @@ public class Board {
 
             }
 
-            if (counterX == 3) {
+            if (counterX == targetCount) {
                 whoWin = Cell.X;
 
             }
-            if (counterO == 3) {
+            if (counterO == targetCount) {
                 whoWin = Cell.O;
 
             }
@@ -314,7 +318,7 @@ public class Board {
         counterO = 0;
 
 
-        for (int hv = 1; hv < 4; hv++) {
+        for (int hv = Index.startIndex; hv <= Index.endIndex; hv++) {
 
 
 
@@ -337,11 +341,11 @@ public class Board {
 
 
 
-            if (counterX == 3) {
+            if (counterX == targetCount) {
                 whoWin = Cell.X;
 
             }
-            if (counterO == 3) {
+            if (counterO == targetCount) {
                 whoWin = Cell.O;
 
             }
@@ -352,8 +356,8 @@ public class Board {
         counterX = 0;
         counterO = 0;
 
-        for (int h = 1; h < 4; h++) {
-            int v = 4 - h;
+        for (int h = Index.startIndex; h <= Index.endIndex; h++) {
+            int v = Index.endIndex + 1 - h;
 
 
 
@@ -376,11 +380,11 @@ public class Board {
 
 
 
-            if (counterX == 3) {
+            if (counterX == targetCount) {
                 whoWin = Cell.X;
 
             }
-            if (counterO == 3) {
+            if (counterO == targetCount) {
                 whoWin = Cell.O;
 
             }
@@ -403,9 +407,9 @@ public class Board {
 
 
 
-        for (int j = 3; j > 0; j--) {
+        for (int j = Index.endIndex; j >= Index.startIndex; j--) {
             System.out.print(j + "  | ");
-            for (int i = 1; i < 4; i++) {
+            for (int i = Index.startIndex; i <= Index.endIndex; i++) {
 
                 System.out.print(getCellFilling(i, j) + " | ");
             }
