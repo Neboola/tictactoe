@@ -38,7 +38,7 @@ public class Move {
         this.priority = 0;
     }
 
-    public static Move treeRoot(){
+    public static Move obtainFullTreeRoot(){
         Move root = new Move();
         root.cell = Cell.O;
         root.nextBoard = new Board();
