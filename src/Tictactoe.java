@@ -9,7 +9,7 @@ public class Tictactoe {
 
     public static void main(String[] args) throws IOException {
 
-
+        System.out.println("New game");
 
         Gamer gamerX = new GamerMan(Cell.X);
         Gamer gamerO = new GamerBot(Cell.O);
