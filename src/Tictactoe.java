@@ -13,8 +13,9 @@ public class Tictactoe {
 
         Gamer gamerX = new GamerMan(Cell.X);
         Gamer gamerO = new GamerBot(Cell.O);
+        int level = 5;
 
-        Game game = new Game(gamerX, gamerO, 5);
+        Game game = new Game(gamerX, gamerO, level);
         game.processGame();
 
     }
