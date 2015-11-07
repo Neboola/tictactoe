@@ -7,12 +7,16 @@ public class GamerBot extends Gamer {
 
     private Cell cell;
 
-    GamerBot(Cell cell){
+    private int level;
+
+    GamerBot(Cell cell, int level){
         super(cell);
         this.cell = cell;
+        this.level = level;
     }
 
-    public Move getMove(Board board, int level){
+
+    public Move getMove(Board board){
         //System.out.println(cell.filling + " thinking...");
 
         Move previousMove = new Move();

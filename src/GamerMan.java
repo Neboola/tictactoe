@@ -14,7 +14,7 @@ public class GamerMan extends Gamer {
         this.cell = cell;
     }
 
-    public Move getMove(Board board, int level) throws IOException {
+    public Move getMove(Board board) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         Move nextMove = new Move();
 

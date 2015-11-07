@@ -11,7 +11,7 @@ public abstract class Gamer {
         this.cell = cell;
     }
 
-    public abstract Move getMove(Board board, int level) throws IOException;
+    public abstract Move getMove(Board board) throws IOException;
 
     @Override
     public String toString(){

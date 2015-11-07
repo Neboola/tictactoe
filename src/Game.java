@@ -9,13 +9,13 @@ public class Game {
     private Gamer gamerX;
     private Gamer gamerO;
     private Gamer currentGamer;
-    private int level;
+    //private int level;
 
-    Game(Gamer gamerX, Gamer gamerO, int level){
+    Game(Gamer gamerX, Gamer gamerO){
         board = new Board();
         this.gamerX = gamerX;
         this.gamerO = gamerO;
-        this.level = level;
+        //this.level = level;
     }
 
     public void processGame() throws IOException {
@@ -40,7 +40,7 @@ public class Game {
 
             while(true){
 
-                nextMove = currentGamer.getMove(board, level);
+                nextMove = currentGamer.getMove(board);
 
                 if(board.canMakeMove(nextMove)){
                     board.makeMove(nextMove);
